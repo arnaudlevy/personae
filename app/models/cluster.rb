@@ -1,4 +1,6 @@
 class Cluster < ApplicationRecord
+  THRESHOLD = 25
+
   belongs_to :variable
   has_and_belongs_to_many :persons
 

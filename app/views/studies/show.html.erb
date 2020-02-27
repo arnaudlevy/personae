@@ -1,7 +1,7 @@
 <h1><%= @study.name %></h1>
-<%= link_to 'Edit', edit_study_path(@study) %>
+<%= link_to 'Edit', edit_study_path(@study), class: 'btn btn-primary btn-sm' %>
 
-<h2>Utilisateurs</h2>
+<h2 class="mt-5">Utilisateurs</h2>
 <ul class="list-unstyled">
   <% @study.persons.each do |person| %>
     <li><%= link_to person, person %></li>
@@ -9,7 +9,7 @@
 </ul>
 <%= link_to 'New Person', new_person_path(study_id: @study.id), class: 'btn btn-primary btn-sm' %>
 
-<h2>Variables</h2>
+<h2 class="mt-5">Variables</h2>
 <table class="table">
   <thead>
     <tr>

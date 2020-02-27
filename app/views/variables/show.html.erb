@@ -2,8 +2,7 @@
 
 <%= link_to 'Edit', edit_variable_path(@variable), class: 'btn btn-primary btn-sm' %>
 
-<h2>Utilisateurs</h2>
-
+<h2 class="mt-5">Utilisateurs</h2>
 <table class="table">
   <thead>
     <tr>
@@ -26,16 +25,11 @@
   <% end %>
 </table>
 
-
-<h2>Clusters</h2>
+<h2 class="mt-5">Clusters</h2>
 <table class="table">
   <% @variable.clusters.reload.each do |cluster| %>
     <tr>
-      <td>
-        <% cluster.persons.each do |person| %>
-          <%= person %>
-        <% end %>
-      </td>
+      <td><%= cluster %></td>
     </tr>
   <% end %>
 </table>

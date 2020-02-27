@@ -24,7 +24,7 @@ class Person < ApplicationRecord
       other_value = p.value_for(variable)
       next if other_value.nil?
       distance = (value - other_value).abs
-      persons << p if distance < 25
+      persons << p if distance < Cluster::THRESHOLD
     end
     persons
   end
