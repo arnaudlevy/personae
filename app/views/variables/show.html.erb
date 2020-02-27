@@ -1,0 +1,14 @@
+<h1><%= @variable %></h1>
+
+<%= link_to 'Edit', edit_variable_path(@variable), class: 'btn btn-primary btn-sm' %>
+
+<h2>Personnes</h2>
+
+<table class="table">
+  <% @study.persons.each do |person| %>
+    <tr>
+      <td><%= link_to person, person %></td>
+      <td><input type="range" name="" value="<%= person.value_for(@variable) %>" disabled style="width: 100%"></td>
+    </tr>
+  <% end %>
+</table>

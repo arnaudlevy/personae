@@ -1,0 +1,18 @@
+<h1><%= @study.name %></h1>
+<%= link_to 'Edit', edit_study_path(@study) %>
+
+<h2>Utilisateurs</h2>
+<ul class="list-unstyled">
+  <% @study.persons.each do |person| %>
+    <li><%= link_to person, person %></li>
+  <% end %>
+</ul>
+<%= link_to 'New Person', new_person_path(study_id: @study.id), class: 'btn btn-primary btn-sm' %>
+
+<h2>Variables</h2>
+<ul class="list-unstyled">
+  <% @study.variables.each do |variable| %>
+    <li><%= link_to variable, variable %></li>
+  <% end %>
+</ul>
+<%= link_to 'New Variable', new_variable_path(study_id: @study.id), class: 'btn btn-primary btn-sm' %>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personae</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md">
+      <%= link_to 'Personae', root_path, class: 'navbar-brand' %>
+    </nav>
+    <div class="container">
+      <div><%= render_breadcrumbs separator: ' / ' %></div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

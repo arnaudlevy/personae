@@ -1,0 +1,19 @@
+<%= simple_form_for person do |f| %>
+  <%= f.association :study, as: :hidden %>
+  <%= f.input :code %>
+  <h2>Evaluations</h2>
+  <table class="table">
+    <%= f.simple_fields_for :evaluations do |e| %>
+      <tr>
+        <td><%= e.object.variable %></td>
+        <td><%= e.input :value,
+                        as: :range,
+                        label: false,
+                        html: {
+                          style: 'width: 100%'
+                        } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= f.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
+<% end %>

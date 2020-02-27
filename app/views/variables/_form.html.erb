@@ -1,0 +1,5 @@
+<%= simple_form_for variable do |f| %>
+  <%= f.association :study, as: :hidden %>
+  <%= f.input :name %>
+  <%= f.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
+<% end %>
