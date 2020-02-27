@@ -12,6 +12,10 @@ class Evaluation < ApplicationRecord
     value.nil?
   end
 
+  def no_value?
+    no_value
+  end
+
   protected
 
   def set_default_value

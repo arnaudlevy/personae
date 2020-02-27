@@ -1,5 +1,5 @@
-<% if evaluation.value? %>
-  <input type="range" name="" value="<%= evaluation.value %>" disabled style="width: 100%">
-<% else %>
+<% if evaluation.no_value? %>
   <span class="text-muted small">No value</span>
+<% else %>
+  <input type="range" name="" value="<%= evaluation.value %>" disabled style="width: 100%">
 <% end %>

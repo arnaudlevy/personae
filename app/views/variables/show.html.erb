@@ -2,14 +2,40 @@
 
 <%= link_to 'Edit', edit_variable_path(@variable), class: 'btn btn-primary btn-sm' %>
 
-<h2>Personnes</h2>
+<h2>Utilisateurs</h2>
 
 <table class="table">
+  <thead>
+    <tr>
+      <th>Utilisateur</th>
+      <th>Proche de...</th>
+      <th>Valeur</th>
+    </tr>
+  </thead>
   <% @study.persons.each do |person| %>
     <% evaluation = person.evaluation_for(@variable) %>
     <tr>
       <td><%= link_to person, person %></td>
+      <td>
+        <% person.persons_close_on(@variable).each do |p| %>
+          <%= p %>
+        <% end %>
+      </td>
       <td><%= render 'evaluations/show', evaluation: evaluation %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<h2>Clusters</h2>
+<table class="table">
+  <% @variable.clusters.reload.each do |cluster| %>
+    <tr>
+      <td>
+        <% cluster.persons.each do |person| %>
+          <%= person %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

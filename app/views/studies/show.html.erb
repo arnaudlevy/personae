@@ -10,9 +10,22 @@
 <%= link_to 'New Person', new_person_path(study_id: @study.id), class: 'btn btn-primary btn-sm' %>
 
 <h2>Variables</h2>
-<ul class="list-unstyled">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Clusters</th>
+    </tr>
+  </thead>
   <% @study.variables.each do |variable| %>
-    <li><%= link_to variable, variable %></li>
+    <tr>
+      <td><%= link_to variable, variable %></td>
+      <td>
+        <% variable.clusters.each do |cluster| %>
+          <span class="badge badge-primary"><%= cluster %></span>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
 <%= link_to 'New Variable', new_variable_path(study_id: @study.id), class: 'btn btn-primary btn-sm' %>

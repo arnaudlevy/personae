@@ -11,6 +11,7 @@ class VariablesController < ApplicationController
   # GET /variables/1
   # GET /variables/1.json
   def show
+    @variable.build_clusters
     add_breadcrumb @study, @study
     add_breadcrumb 'Variables'
     add_breadcrumb @variable

@@ -10,6 +10,7 @@ class StudiesController < ApplicationController
   # GET /studies/1
   # GET /studies/1.json
   def show
+    @study.build_clusters
     add_breadcrumb @study
   end
 
