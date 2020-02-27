@@ -35,6 +35,32 @@ class Person < ApplicationRecord
     end
   end
 
+  def affinity_with(person)
+    return 0 if person == self
+    affinity = 0
+    study.variables.each do |variable|
+      variable.clusters.each do |cluster|
+        if self.in?(cluster.persons)
+          if person.in?(cluster.persons)
+            affinity += 1
+            break
+          end
+        end
+      end
+    end
+    affinity
+  end
+
+  def affinity_with_others
+    unless @affinity_with_others
+      @affinity_with_others = 0
+      study.persons.each do |person|
+        @affinity_with_others += affinity_with(person)
+      end
+    end
+    @affinity_with_others
+  end
+
   def to_s
     "U#{code}"
   end

@@ -29,3 +29,35 @@
   <% end %>
 </table>
 <%= link_to 'New Variable', new_variable_path(study_id: @study.id), class: 'btn btn-primary btn-sm' %>
+
+<h2 class="mt-5">Affinité des profils</h2>
+<p>1 point par cluster en commun (limité à un cluster commun par variable).</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <% @study.persons.each do |person| %>
+        <th><%= person %></th>
+      <% end %>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @study.persons.each do |person| %>
+      <tr>
+        <td><%= person %></td>
+        <% @study.persons.each do |p| %>
+          <td><%= person.affinity_with(p) %></td>
+        <% end %>
+        <td><%= person.affinity_with_others %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Total</td>
+      <% @study.persons.each do |p| %>
+        <td><%= p.affinity_with_others %></td>
+      <% end %>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
