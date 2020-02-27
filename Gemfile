@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'bootstrap'
 gem 'breadcrumbs_on_rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

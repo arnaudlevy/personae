@@ -1,13 +1,14 @@
-<h1><%= @person.code %></h1>
+<h1><%= @person %></h1>
 
 <%= link_to 'Edit', edit_person_path(@person), class: 'btn btn-primary btn-sm' %>
 
 <h2>Variables</h2>
 <table class="table">
   <% @person.study.variables.each do |variable| %>
+    <% evaluation = @person.evaluation_for(variable) %>
     <tr>
       <td><%= link_to variable, variable %></td>
-      <td><input type="range" name="" value="<%= @person.value_for(variable) %>" disabled style="width: 100%"></td>
+      <td><%= render 'evaluations/show', evaluation: evaluation %></td>
     </tr>
   <% end %>
 </table>

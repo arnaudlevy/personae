@@ -27,9 +27,11 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
-    @study.variables.each do |variable|
-      Evaluation.where(person: @person, variable: variable).first_or_create
-    end
+    @person.create_evaluations
+    add_breadcrumb @study, @study
+    add_breadcrumb 'Personnes'
+    add_breadcrumb @person, @person
+    add_breadcrumb 'Modifier'
   end
 
   # POST /people
@@ -39,7 +41,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person.study, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new }
@@ -86,6 +88,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:study_id, :code, evaluations_attributes: [:id, :value])
+      params.require(:person).permit(:study_id, :code, evaluations_attributes: [:id, :value, :no_value])
     end
 end

@@ -5,13 +5,18 @@
   <table class="table">
     <%= f.simple_fields_for :evaluations do |e| %>
       <tr>
-        <td><%= e.object.variable %></td>
-        <td><%= e.input :value,
+        <td width="300"><%= e.object.variable %></td>
+        <td>
+          <div class="value_and_no_value">
+            <%= e.input :no_value, as: :boolean %>
+            <%= e.input :value,
                         as: :range,
                         label: false,
                         html: {
                           style: 'width: 100%'
-                        } %></td>
+                        } %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </table>

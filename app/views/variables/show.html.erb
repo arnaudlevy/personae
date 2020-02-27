@@ -6,9 +6,10 @@
 
 <table class="table">
   <% @study.persons.each do |person| %>
+    <% evaluation = person.evaluation_for(@variable) %>
     <tr>
       <td><%= link_to person, person %></td>
-      <td><input type="range" name="" value="<%= person.value_for(@variable) %>" disabled style="width: 100%"></td>
+      <td><%= render 'evaluations/show', evaluation: evaluation %></td>
     </tr>
   <% end %>
 </table>
